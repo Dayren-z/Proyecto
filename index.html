@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zara Home España | Sitio oficial</title>
+    <meta
+      name="description"
+      content="Las últimas tendencias en textil y decoración del hogar en la nueva colección de Zara Home. Ropa de cama, vajillas, menaje, toallas o accesorios de decoración."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://ext.same-assets.com/1847217613/1510441429.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Manrope:wght@200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script defer src="./js/app.js"></script>
+  </head>
+
+  <body>
+    <!-- Country Selection Modal -->
+    <div class="modal-overlay hidden" id="countryModal">
+      <div class="modal">
+        <button class="modal-close" id="modalClose" aria-label="Cerrar modal">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M1 1L13 13M1 13L13 1"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+        <div class="modal-content">
+          <h2 class="modal-title">HOLA,</h2>
+          <p class="modal-subtitle">Sí, continuar en España</p>
+          <button class="modal-btn modal-btn-primary" id="continueBtn">
+            SÍ, CONTINUAR EN ESPAÑA
+          </button>
+          <button class="modal-btn modal-btn-secondary">
+            NO, IR A LA WEB DE UNITED STATES
+          </button>
+          <p class="modal-note">
+            Estamos presentes en más de 79 regiones. Selecciona la tuya
+            <a href="/seleccion-pais">aquí</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+      <!-- Header -->
+    <header class="header" id="header">
+      <div class="header-left">
+         <!-- Botón hamburguesa de 3 rayitas -->
+         <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      
+        <div class="header-center">
+        <a href="#" class="logo">
+          <span class="logo-text">ZARA HOME</span>
+        </a>
+      </div>
+        
+      <div class="header-right">
+        <!--BOTON DE INICIO DE SESION-->
+        <button class="header-icon" id="loginBtn" aria-label="Account">
+          Iniciar sesión
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 21v-2a4 4 0 014-4h8a4 4 0 014 4v2"/>
+          </svg>
+        </button>
+        <button class="header-icon" aria-label="Search">
+          Buscar
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </button>
+        <button class="header-icon cart-icon" id="cartIcon" aria-label="Cart">
+          Carrito
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 6h15l-1.5 9h-13z"/>
+            <circle cx="9" cy="20" r="1"/>
+            <circle cx="18" cy="20" r="1"/>
+            <path d="M6 6L5 3H2"/>
+          </svg>
+          <span class="cart-count" id="cartCount">(0)</span>
+        </button>
+
+        <!-- Cart Dropdown -->
+        <div class="cart-dropdown hidden" id="cartDropdown">
+          <div class="cart-header">
+            <h3>Mi Carrito</h3>
+            <button class="cart-close" id="cartClose" aria-label="Cerrar carrito">✕</button>
+          </div>
+          <div class="cart-items" id="cartItems">
+            <!-- Los productos se renderizarán aquí -->
+          </div>
+          <div class="cart-footer">
+            <div class="cart-total">
+              <span>Total:</span>
+              <span class="total-amount" id="totalAmount">0.00 €</span>
+            </div>
+            <button class="checkout-btn">Ir al Carrito</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menú desplegable (oculto inicialmente) -->
+        <div class="dropdown-menu" id="dropdownMenu">
+          <nav class="dropdown-nav">
+            <ul class="dropdown-list">
+              <li><a href="/novedades">NOVEDADES</a></li>
+              <li><a href="/dormitorio">DORMITORIO</a></li>
+              <li><a href="/decoracion">DECORACIÓN</a></li>
+              <li><a href="/muebles">MUEBLES</a></li>
+              <li><a href="/cocina-y-comedor">COCINA Y COMEDOR</a></li>
+              <li><a href="./banos.html">BAÑO</a></li>
+              <li><a href="/fragancias">FRAGANCIAS</a></li>
+              <li><a href="/ninos-y-bebes">NIÑOS Y BEBÉS</a></li>
+              <li><a href="/special-prices">SPECIAL PRICES</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="/ayuda">AYUDA</a></li>
+              <li><a href="/contacto">CONTACTO</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+<!-- Overlay -->
+<div class="menu-overlay hidden" id="menuOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main">
+      <h1 class="visually-hidden">Zara Home - Colección Hogar</h1>
+      
+      <!-- Hero Section -->
+      <section class="hero" id="hero">
+        <h2 class="visually-hidden">Novedades y colecciones destacadas</h2>
+        
+        <img
+          src="./img/cosmetica_01.jpg"
+          alt="Colección de cosmética - Novedades Zara Home"
+          class="hero-image"
+          id="heroImage"
+        />
+        
+        <nav class="hero-nav" aria-label="Colecciones destacadas">
+          <ul class="hero-nav-list">
+            <li>
+              <a
+                href="/novedades"
+                class="hero-nav-link active"
+                data-image="./img/cosmetica_01.jpg"
+              >
+                NOVEDADES
+              </a>
+            </li>
+            <li>
+              <a
+                href="/metal-trend"
+                class="hero-nav-link"
+                data-image="./img/260219_metal_trend.jpg"
+              >
+                METAL TREND
+              </a>
+            </li>
+            <li>
+              <a
+                href="/vincent-van-duysen"
+                class="hero-nav-link"
+                data-image="./img/250710_VVD_FRANCOIS.jpg"
+              >
+                VINCENT VAN DUYSEN
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+
+      
+            <!-- Featured Products -->
+      <section class="featured" id="featured">
+        <h2 class="section-title">LO MÁS VENDIDO</h2>
+        <div class="products-grid">
+          <a href="./banos.html" class="product-link">
+          <article class="product-card">
+            <div class="product-image-wrapper">
+              <img src="./img/baños.png" alt="Baños" class="product-image" />
+              <button class="product-wishlist">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Baños</h3>
+            </div>
+          </article>
+          </a>
+          <article class="product-card">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?w=600&h=800&fit=crop&q=80" alt="Decoración" class="product-image" />
+              <button class="product-wishlist">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Decoración</h3>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1616627561839-074385245ff6?w=600&h=800&fit=crop&q=80" alt="Dormitorio" class="product-image" />
+              <button class="product-wishlist">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Dormitorio</h3>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-image-wrapper">
+              <img src="./img/muebles.png" alt="Muebles" class="product-image" />
+              <button class="product-wishlist">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </button>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Muebles</h3>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Inline styles for visually-hidden class (could also be in your CSS file) -->
+    <style>
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+      
+      .hidden {
+        display: none !important;
+      }
+      
+      .cart-count:empty {
+        display: none;
+      }
+    </style>
+    
+    <!-- Modal de Inicio de Sesión -->
+    <div class="auth-modal hidden" id="authModal">
+      <div class="auth-overlay" id="authOverlay"></div>
+      <div class="auth-container">
+        <button class="auth-close" id="authClose" aria-label="Cerrar">✕</button>
+        
+        <div class="auth-header">
+          <h2>Iniciar Sesión</h2>
+          <p>Introduce tus datos para acceder a tu cuenta</p>
+        </div>
+
+        <form class="auth-form" id="loginForm">
+          <div class="auth-input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          </div>
+          
+          <div class="auth-input-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" placeholder="••••••••" required>
+          </div>
+
+          <button type="submit" class="auth-submit-btn">Entrar</button>
+          
+          <div class="auth-footer">
+            <a href="#" class="auth-link">¿Olvidaste tu contraseña?</a>
+            <span>¿No tienes cuenta? <a href="#" class="auth-link">Regístrate</a></span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Manejar apertura y cierre del modal de login
+      const loginBtn = document.getElementById("loginBtn");
+      const authModal = document.getElementById("authModal");
+      const authClose = document.getElementById("authClose");
+      const authOverlay = document.getElementById("authOverlay");
+      const loginForm = document.getElementById("loginForm");
+
+      // Abrir modal
+      loginBtn?.addEventListener("click", () => {
+        authModal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      });
+
+      // Cerrar modal
+      function closeAuthModal() {
+        authModal.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+
+      authClose?.addEventListener("click", closeAuthModal);
+      authOverlay?.addEventListener("click", closeAuthModal);
+
+      // Cerrar con ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !authModal.classList.contains("hidden")) {
+          closeAuthModal();
+        }
+      });
+
+      // Manejar envío del formulario
+      loginForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        console.log("Iniciando sesión:", { email, password });
+        alert("Bienvenido " + email + "!");
+        loginForm.reset();
+        closeAuthModal();
+      });
+    </script>
+
+  </body>
+</html>
