@@ -50,6 +50,8 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  overflow-y: auto;
+  height: auto;
 }
 
 body {
@@ -65,11 +67,7 @@ body {
   min-height: 100vh;
 }
 
-html {
-  /* some browsers need explicit scroll property */
-  overflow-y: auto;
-  height: auto;
-}
+
 
 /* =========================
    UTILIDADES
@@ -480,6 +478,7 @@ body.menu-open {
   display: flex;
   flex-direction: column;
   text-align: center; /* Zara suele centrar el texto debajo */
+  width: 100%;
 }
 
 .image-wrapper {
@@ -593,12 +592,7 @@ body.menu-open {
   margin-top: 100px;
   padding: 20px;
 }
-/* Estilo de la Card */
-.producto-card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
+
 /* =========================
    HERO SECTION
    ========================= */
