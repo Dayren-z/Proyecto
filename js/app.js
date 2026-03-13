@@ -251,9 +251,9 @@ function renderBathProducts(productArray) {
   // Agregar event listeners a los botones
   document.querySelectorAll(".add-cart-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      const productId = parseInt(e.target.dataset.productId);
+      const productId = Number.parseInt(e.target.dataset.productId);
       const productName = e.target.dataset.productName;
-      const productPrice = parseFloat(e.target.dataset.productPrice);
+      const productPrice = Number.parseFloat(e.target.dataset.productPrice);
       addToBathCart(productId, productName, productPrice);
     });
   });
@@ -261,7 +261,7 @@ function renderBathProducts(productArray) {
   // Agregar event listeners a los botones de favoritos
   document.querySelectorAll(".wishlist-btn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      const productId = parseInt(e.currentTarget.dataset.productId);
+      const productId = Number.parseInt(e.currentTarget.dataset.productId);
       const productName = e.currentTarget.dataset.productName;
       toggleFavorite(productId, productName, e.currentTarget);
     });
