@@ -618,10 +618,12 @@ body.menu-open {
   left: 50%;
   transform: translateX(-50%);
   background: transparent; /* elimina fondo blanco */
-  width: 100%;
   display: flex;
   justify-content: center;
   overflow: visible !important;
+  width: 90%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .hero-nav-list {
@@ -764,25 +766,6 @@ body.menu-open {
     padding: var(--spacing-md) var(--spacing-md);
     font-size: 0.7rem;
   }
-}
-
-.menu-btn {
-  display: flex;
-}
-
-.hero-nav {
-  bottom: var(--spacing-lg);
-  width: 90%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.hero-nav-list {
-  padding: 0;
-}
-
-.hero-nav-link {
-  padding: var(--spacing-md) var(--spacing-lg);
 }
 
 @media (max-width: 768px) {
