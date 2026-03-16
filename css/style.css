@@ -548,40 +548,8 @@ body.menu-open {
   margin-top: 15px;
   text-transform: uppercase;
 }
-/*corazon de card*/
-/* --- Estilos del Botón del Corazón (Esquina superior derecha) --- */
-.wishlist-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
 
-  /* Crear el cuadrado gris limpio */
-  width: 36px; /* Tamaño del cuadrado */
-  height: 36px;
-  background-color: #e8dede;
-  border: 1px solid #5b5656;
-  border-radius: 4px;
 
-  /* Alinear el icono del corazón en el centro */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* Estilo del icono del corazón */
-  font-size: 20px; /* Tamaño del corazón */
-  color: #333; /* Color del icono outline */
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-  z-index: 10;
-}
-
-/* Interacción al pasar el ratón por el corazón */
-.wishlist-btn:hover {
-  background-color: #e0e0e0;
-  color: #000;
-  transform: scale(1.05);
-}
 /* =========================
    MAIN CONTENT
    ========================= */
@@ -1201,9 +1169,17 @@ body.menu-open {
     left: 10px;
   }
 }
+@media (max-width: 768px) {
+  .cart-message {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    border-radius: 4px;
+  }
+}
 
 /* =========================
-   WISHLIST BUTTON
+   WISHLIST BUTTON CORAZON
    ========================= */
 
 .wishlist-btn {
@@ -1219,15 +1195,16 @@ body.menu-open {
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  color: #999;
+  color: #333;
   cursor: pointer;
   transition: all var(--transition-fast);
   z-index: 10;
   padding: 0;
 }
-
+/* Interacción al pasar el ratón por el corazón */
 .wishlist-btn:hover {
   background-color: white;
+   color: #000;   
   transform: scale(1.1);
 }
 
@@ -1235,34 +1212,6 @@ body.menu-open {
   color: black;
   background-color: white;
   border-color: black;
-}
-
-/* =========================
-   CART MESSAGE NOTIFICATION
-   ========================= */
-
-.cart-message {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 16px 24px;
-  background-color: var(--color-accent);
-  color: white;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-  box-shadow: var(--shadow-lg);
-  animation: slideUp var(--transition-normal);
-  z-index: 1000;
-}
-
-@media (max-width: 768px) {
-  .cart-message {
-    bottom: 10px;
-    right: 10px;
-    left: 10px;
-    border-radius: 4px;
-  }
 }
 
 /* =========================

@@ -433,14 +433,11 @@ function renderCartDropdown() {
     const itemTotal = item.price * item.quantity;
     totalPrice += itemTotal;
 
-    // Buscar imagen del producto
-    let productImage = "./img/placeholder.png";
-    if (typeof allBathProducts !== "undefined" && allBathProducts.length > 0) {
-      const product = allBathProducts.find((p) => p.id === item.id);
-      if (product && product.imagen) {
-        productImage = product.imagen;
-      }
-    }
+    // Buscar imagen del producto ++++++
+   const product = allBathProducts?.find((p) => p.id === item.id);
+  const productImage = product?.imagen || "./img/placeholder.png";
+
+
 
     const cartItem = document.createElement("div");
     cartItem.className = "cart-item";
