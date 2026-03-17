@@ -605,7 +605,8 @@ function initBathSearchAndFilters() {
         count = cart.length || 0;
       }
     } catch (e) {
-      console.warn("Could not parse cart data");
+      console.warn("Could not parse cart data", e);
+      count = 0;
     }
 
     cartCount.textContent = count > 0 ? `(${count})` : "";
@@ -624,7 +625,7 @@ function initBathSearchAndFilters() {
   updateCartCount();
 
   // Optional: Listen for storage changes (if cart is modified in another tab)
-  window.addEventListener("storage", (e) => {
+  globalThis.addEventListener("storage", (e) => {
     if (e.key === "zarahome_cart") {
       updateCartCount();
     }
@@ -636,7 +637,7 @@ function initBathSearchAndFilters() {
 // =========================
 (function initUtils() {
   // Add touch support detection class
-  if ("ontouchstart" in window) {
+  if ("ontouchstart" in globalThis) {
     document.documentElement.classList.add("touch");
   }
 
