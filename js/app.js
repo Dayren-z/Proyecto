@@ -87,9 +87,9 @@ const STORAGE_KEY = "zarahome_modal_dismissed";
     ticking = false;
   }
 
-  window.addEventListener("scroll", () => {
+  globalThis.addEventListener("scroll", () => {
     if (!ticking) {
-      window.requestAnimationFrame(updateHeader);
+      globalThis.requestAnimationFrame(updateHeader);
       ticking = true;
     }
   });
@@ -172,7 +172,7 @@ const STORAGE_KEY = "zarahome_modal_dismissed";
 let allBathProducts = []; // Almacenar todos los productos
 
 // Detectar y cargar productos de baño si el elemento existe en la página
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const contenedorBano = document.getElementById("contenedor-baño");
   console.log("Contenedor baño encontrado:", contenedorBano);
   if (contenedorBano) {
@@ -214,7 +214,8 @@ function renderBathProducts(productArray) {
   console.log("Contenedor limpiado");
 
   if (productArray.length === 0) {
-    contenedor.innerHTML = "<p class='no-products'>No se encontraron productos</p>";
+    contenedor.innerHTML =
+      "<p class='no-products'>No se encontraron productos</p>";
     console.log("No hay productos para mostrar");
     return;
   }
@@ -255,8 +256,8 @@ function renderBathProducts(productArray) {
       const productName = e.target.dataset.productName;
       const productPrice = Number.parseFloat(btn.dataset.productPrice);
       addToBathCart(productId, productName, productPrice);
-    btn.textContent = "Añadido";
-    btn.classList.add("added");
+      btn.textContent = "Añadido";
+      btn.classList.add("added");
     });
   });
 
@@ -304,12 +305,14 @@ function removeFromBathCart(productId) {
     saveCart(cart);
     updateCartDisplayAll();
     // Restaurar el botón de añadir al eliminar un producto del carrito
-    const btn = document.querySelector(`.add-cart-btn[data-product-id="${productId}"]`);
+    const btn = document.querySelector(
+      `.add-cart-btn[data-product-id="${productId}"]`,
+    );
     if (btn) {
       btn.classList.remove("added");
       btn.textContent = "Añadir al carrito";
+    }
   }
-}
 }
 // Obtener carrito del localStorage
 function getCart() {
@@ -366,7 +369,7 @@ function saveFavorites(favorites) {
 function toggleFavorite(productId, productName, buttonElement) {
   let favorites = getFavorites();
   const idx = favorites.findIndex((f) => f.name === productName);
-  if (idx !== -1) {
+  if (idx >= 0) {
     // ya está como favorito -> eliminar
     favorites.splice(idx, 1);
     buttonElement.classList.remove("filled");
@@ -391,7 +394,7 @@ function updateCartDisplayAll() {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = cart.reduce(
       (sum, item) => sum + item.price * item.quantity,
-      0
+      0,
     );
 
     cartItemCount.textContent = totalItems;
@@ -433,11 +436,9 @@ function renderCartDropdown() {
     const itemTotal = item.price * item.quantity;
     totalPrice += itemTotal;
 
-    // Buscar imagen del producto ++++++
-   const product = allBathProducts?.find((p) => p.id === item.id);
-  const productImage = product?.imagen || "./img/placeholder.png";
-
-
+    // Buscar imagen del producto
+    const product = allBathProducts?.find((p) => p.id === item.id);
+    const productImage = product?.imagen || "./img/placeholder.png";
 
     const cartItem = document.createElement("div");
     cartItem.className = "cart-item";
@@ -480,10 +481,7 @@ function renderCartDropdown() {
 
   // Close cart when clicking outside
   document.addEventListener("click", (e) => {
-    if (
-      !cartIcon.contains(e.target) &&
-      !cartDropdown.contains(e.target)
-    ) {
+    if (!cartIcon.contains(e.target) && !cartDropdown.contains(e.target)) {
       cartDropdown.classList.add("hidden");
     }
   });
@@ -611,12 +609,15 @@ function initBathSearchAndFilters() {
     }
 
     cartCount.textContent = count > 0 ? `(${count})` : "";
-    cartCount.setAttribute(
-      "aria-label",
-      count === 0
-        ? "Carrito vacío"
-        : `${count} producto${count !== 1 ? "s" : ""} en el carrito`,
-    );
+
+    let ariaLabel = "";
+    if (count === 0) {
+      ariaLabel = "Carrito vacío";
+    } else {
+      ariaLabel = `${count} producto${count !== 1 ? "s" : ""} en el carrito`;
+    }
+
+    cartCount.setAttribute("aria-label", ariaLabel);
   }
 
   // Initial update
