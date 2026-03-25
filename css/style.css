@@ -120,11 +120,12 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0);
-  z-index: 5001;
+  z-index: 5000;
+  display: none;
 }
 
-.menu-overlay.hidden {
-  display: none;
+.menu-overlay.active {
+  display: block;
 }
 /* Evitar scroll cuando el menú está abierto */
 body.menu-open {
@@ -161,7 +162,7 @@ body.menu-open {
 .hamburger-btn.active span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -7px);
 }
-/* PANEL LATERAL (MENÚ HAMBURGUESA)copi */
+/* PANEL LATERAL (MENÚ HAMBURGUESA) */
 .dropdown-menu {
   position: fixed;
   top: 0;
@@ -170,11 +171,13 @@ body.menu-open {
   height: 100vh;
   background: #ffffff;
   padding: 40px 30px;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+
+  -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   transition: left 0.35s ease;
   z-index: 6000;
   font-family: "Helvetica Neue", Arial, sans-serif;
+  
 }
 
 /* Cuando se abre */
@@ -585,10 +588,10 @@ body.menu-open {
 
 .hero-nav {
   position: absolute;
-  bottom: 40px; /* o donde lo quieras */
+  bottom: 40px; 
   left: 50%;
   transform: translateX(-50%);
-  background: transparent; /* elimina fondo blanco */
+  background: transparent; 
   display: flex;
   justify-content: center;
   overflow: visible !important;
@@ -604,11 +607,13 @@ body.menu-open {
   list-style: none;
   padding: 0;
   margin: 0;
+ 
 }
 
 .hero-nav-link {
   text-decoration: none;
-  color: #111;
+  border-bottom: none;
+  color:white;
   font-size: 0.85rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -622,6 +627,7 @@ body.menu-open {
 }
 
 .hero-nav-link::after {
+  display: none;
   content: "";
   position: absolute;
   bottom: 0;
@@ -634,7 +640,8 @@ body.menu-open {
 }
 
 .hero-nav-link.active {
-  border-bottom: 1px solid #111;
+  border-bottom: none;
+  
 }
 
 .hero-nav-link.active::after {
@@ -703,6 +710,7 @@ body.menu-open {
   margin-bottom: var(--spacing-xs);
   line-height: 1.4;
 }
+
 
 /* =========================
    MEDIA QUERIES (RESPONSIVE)

@@ -6,18 +6,41 @@ const dropdownMenu = document.getElementById("dropdownMenu");
 const menuOverlay = document.getElementById("menuOverlay");
 
 if (hamburgerBtn && dropdownMenu && menuOverlay) {
-  hamburgerBtn.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("active");
-    menuOverlay.classList.toggle("hidden");
-    hamburgerBtn.classList.toggle("active");
-    document.body.classList.toggle("menu-open");
-  });
+  let isOpen = false;
 
-  menuOverlay.addEventListener("click", () => {
+  function openMenu() {
+    isOpen = true;
+    dropdownMenu.classList.add("active");
+    menuOverlay.classList.add("active");
+    hamburgerBtn.classList.add("active");
+    document.body.classList.add("menu-open");
+  }
+
+  function closeMenu() {
+    isOpen = false;
     dropdownMenu.classList.remove("active");
-    menuOverlay.classList.add("hidden");
+    menuOverlay.classList.remove("active");
     hamburgerBtn.classList.remove("active");
     document.body.classList.remove("menu-open");
+  }
+
+  hamburgerBtn.addEventListener("click", () => {
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  menuOverlay.addEventListener("click", closeMenu);
+
+  // ESC key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen) {
+      closeMenu();
+      hamburgerBtn.focus();
+    }
+  });
+
+  // Click en links
+  dropdownMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
   });
 }
 
@@ -541,50 +564,9 @@ function initBathSearchAndFilters() {
 // =========================
 // MOBILE MENU FUNCTIONALITY
 // =========================
-(function initMobileMenu() {
-  const menuBtn = document.getElementById("menuBtn");
-  const dropdownMenu = document.querySelector(".dropdown-menu");
 
-  if (!menuBtn || !dropdownMenu) return;
 
-  let isMenuOpen = false;
 
-  function toggleMenu(open = !isMenuOpen) {
-    isMenuOpen = open;
-    dropdownMenu.classList.toggle("active", isMenuOpen);
-    menuBtn.classList.toggle("active", isMenuOpen);
-    menuBtn.setAttribute("aria-expanded", isMenuOpen);
-
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = isMenuOpen ? "hidden" : "";
-  }
-
-  menuBtn.addEventListener("click", () => toggleMenu());
-
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (
-      isMenuOpen &&
-      !menuBtn.contains(e.target) &&
-      !dropdownMenu.contains(e.target)
-    ) {
-      toggleMenu(false);
-    }
-  });
-
-  // Close menu with Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && isMenuOpen) {
-      toggleMenu(false);
-      menuBtn.focus();
-    }
-  });
-
-  // Close menu when clicking on a link
-  dropdownMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => toggleMenu(false));
-  });
-})();
 
 // =========================
 // CART COUNTER FUNCTIONALITY
