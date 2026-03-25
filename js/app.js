@@ -4,6 +4,9 @@ console.log("app.js cargado");
 const hamburgerBtn = document.getElementById("hamburger-btn");
 const dropdownMenu = document.getElementById("dropdownMenu");
 const menuOverlay = document.getElementById("menuOverlay");
+const closeBtn = document.getElementById("closeMenu");
+
+
 
 if (hamburgerBtn && dropdownMenu && menuOverlay) {
   let isOpen = false;
@@ -29,6 +32,9 @@ if (hamburgerBtn && dropdownMenu && menuOverlay) {
   });
 
   menuOverlay.addEventListener("click", closeMenu);
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeMenu);
+  }
 
   // ESC key
   document.addEventListener("keydown", (e) => {
@@ -38,8 +44,8 @@ if (hamburgerBtn && dropdownMenu && menuOverlay) {
     }
   });
 
-  // Click en links
-  dropdownMenu.querySelectorAll("a").forEach((link) => {
+  // Click en link de baño:
+  dropdownMenu.querySelectorAll(".close-on-click").forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
 }
@@ -542,7 +548,7 @@ function showAddedToCartMessage(productName) {
   }, 2000);
 }
 
-// Inicializar búsqueda y filtros
+// Inicializar búsqueda y filtros ++
 function initBathSearchAndFilters() {
   const searchInput = document.getElementById("searchInput");
   if (!searchInput) return;
@@ -561,10 +567,21 @@ function initBathSearchAndFilters() {
   updateCartDisplayAll();
 }
 
-// =========================
-// MOBILE MENU FUNCTIONALITY
-// =========================
+/*nuevo*/
+const searchToggle = document.getElementById("searchToggle");
+const searchOverlay = document.getElementById("searchOverlay");
 
+searchToggle.addEventListener("click", () => {
+  searchOverlay.classList.add("active");
+  document.getElementById("searchInput").focus();
+});
+
+// cerrar al hacer click fuera
+searchOverlay.addEventListener("click", (e) => {
+  if (e.target === searchOverlay) {
+    searchOverlay.classList.remove("active");
+  }
+});
 
 
 

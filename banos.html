@@ -6,6 +6,7 @@
     <title>Baños - Zara Home</title>
     <link rel="stylesheet" href="./css/style.css" />
     <script defer src="./js/app.js"></script>
+    
   </head>
 
   <body>
@@ -58,7 +59,8 @@
       </div>
 
       <div class="header-right">
-        <button class="header-icon" >Iniciar sesión
+        <button class="header-icon">
+          Iniciar sesión
           <svg
             width="20"
             height="20"
@@ -71,31 +73,28 @@
             <path d="M4 21v-2a4 4 0 014-4h8a4 4 0 014 4v2" />
           </svg>
         </button>
-        <!-- AQUI VA EL BUSCADOR -->
 
-        <button class="header-icon" > Buscar
-          <div class="header-search">
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Buscar productos..."
-              aria-label="Buscar productos"
-            />
-          </div>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-            <circle cx="11" cy="11" r="7" />
-            <path d="M21 21l-4.35-4.35" />
+        <!-- BOTÓN -->
+        <button class="header-icon" id="searchToggle">
+          BUSCAR
+         
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="M21 21l-4.35-4.35"/>
           </svg>
         </button>
 
-        <button class="header-icon cart-icon" id="cartIcon" > Carrito
+        <!-- BUSCADOR (FUERA) -->
+        <div class="search-overlay" id="searchOverlay">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="¿Qué Estás Buscando?"
+          />
+        </div>
+
+        <button class="header-icon cart-icon" id="cartIcon">
+          Carrito
           <svg
             width="20"
             height="20"
@@ -155,16 +154,13 @@
         <p>Descubre nuestra colección de toallas y accesorios para el baño</p>
       </section>
 
-      
-
       <div id="contenedor-baño" class="productos"></div>
     </main>
 
     <!-- Footer -->
-    
+
     <footer class="footer">
       <p>&copy; 2026 Zara Home. Todos los derechos reservados.</p>
     </footer>
-
   </body>
 </html>
