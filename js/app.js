@@ -55,13 +55,17 @@ if (hamburgerBtn && dropdownMenu && menuOverlay) {
 // =========================
 const STORAGE_KEY = "zarahome_modal_dismissed";
 
+
 // =========================
-// MODAL FUNCTIONALITY
+// MODAL FUNCTIONALITY(Region)
 // =========================
 (function initModal() {
+  const STORAGE_KEY = "countryModalDismissed";
+
   const countryModal = document.getElementById("countryModal");
   const modalClose = document.getElementById("modalClose");
   const continueBtn = document.getElementById("continueBtn");
+  const goToUS = document.getElementById("goToUS");
 
   // Early return if modal doesn't exist
   if (!countryModal) return;
@@ -86,6 +90,14 @@ const STORAGE_KEY = "zarahome_modal_dismissed";
   // Event listeners
   modalClose?.addEventListener("click", closeModal);
   continueBtn?.addEventListener("click", closeModal);
+ 
+  //boton redireccion US
+  goToUS?.addEventListener("click", () => {
+    localStorage.setItem(STORAGE_KEY, "US");
+    window.location.href = "https://www.zarahome.com/us/";
+  });
+
+
 
   // Close when clicking outside
   countryModal.addEventListener("click", (e) => {
@@ -229,7 +241,29 @@ function cargarProductosBano() {
     .catch((err) => console.error("Error cargando productos:", err));
 }
 
-// RENDERIZAR productos de baño
+// Gestión de vistas (2, 3, 4 columnas)
+document.addEventListener("DOMContentLoaded", () => {
+const grid = document.getElementById("contenedor-baño");
+const buttons = document.querySelectorAll(".view-btn");
+
+console.log("Botones encontrados:", buttons.length);
+
+if (!grid || buttons.length === 0) return;
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const view = btn.dataset.view;
+
+      // cambiar columnas
+      grid.classList.remove("view-2", "view-3", "view-4");
+      grid.classList.add(`view-${view}`);
+
+      // cambiar botón activo
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+});
+// Función para renderizar productos de baño
 function renderBathProducts(productArray) {
   const contenedor = document.querySelector("#contenedor-baño");
   console.log("Renderizando productos. Contenedor:", contenedor);
@@ -571,10 +605,12 @@ function initBathSearchAndFilters() {
 const searchToggle = document.getElementById("searchToggle");
 const searchOverlay = document.getElementById("searchOverlay");
 
-searchToggle.addEventListener("click", () => {
-  searchOverlay.classList.add("active");
-  document.getElementById("searchInput").focus();
-});
+if (searchToggle && searchOverlay) {
+  searchToggle.addEventListener("click", () => {
+    searchOverlay.classList.add("active");
+    document.getElementById("searchInput")?.focus();
+  });
+
 
 // cerrar al hacer click fuera
 searchOverlay.addEventListener("click", (e) => {
@@ -582,7 +618,7 @@ searchOverlay.addEventListener("click", (e) => {
     searchOverlay.classList.remove("active");
   }
 });
-
+}
 
 
 // =========================
