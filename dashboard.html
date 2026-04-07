@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h1 id="welcomeMessage">Bienvenido</h1>
+    <button id="logoutBtn">Cerrar sesión</button>
+
+    <p>Has iniciado sesión correctamente.</p>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const token = localStorage.getItem("token");
+
+        // Si no hay token, no debería estar aquí
+        if (!token) {
+          window.location.href = "index.html";
+          return;
+        }
+
+        try {
+          const response = await fetch("http://127.0.0.1:8000/api/user", {
+            method: "GET",
+            headers: {
+              Authorization: "Bearer " + token,
+              Accept: "application/json",
+            },
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            // Token inválido o expirado
+            localStorage.removeItem("token");
+            window.location.href = "index.html";
+            return;
+          }
+
+          // Mostrar nombre real
+          document.getElementById("welcomeMessage").textContent =
+            "Bienvenida, " + data.name;
+        } catch (error) {
+          console.error("Error:", error);
+          alert("No se pudo cargar el usuario");
+        }
+      });
+      
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        // Borrar token
+        localStorage.removeItem("token");
+
+        // Redirigir al inicio
+        window.location.href = "index.html";
+      });
+    </script>
+  </body>
+</html>
