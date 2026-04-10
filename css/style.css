@@ -161,7 +161,6 @@ body.menu-open {
 
   background: none;
   border: none;
-  font-size: 20px;
   cursor: pointer;
 
   color: #000;
@@ -544,7 +543,6 @@ body.menu-open {
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
 .grid span {
-  border: 1px solid #222;
   width: 100%;
   height: 100%;
   border: 1px solid #000;
@@ -1336,7 +1334,7 @@ body.menu-open {
 
 .page-header h1 {
   font-family: var(--font-primary);
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 300;
   letter-spacing: 0.1em;
   margin-bottom: 12px;
@@ -1344,7 +1342,7 @@ body.menu-open {
 }
 
 .page-header p {
-  font-size: 14px;
+  font-size: 20px;
   color: var(--color-text-light);
 }
 

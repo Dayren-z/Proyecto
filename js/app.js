@@ -248,7 +248,7 @@ const buttons = document.querySelectorAll(".view-btn");
 
 console.log("Botones encontrados:", buttons.length);
 
-if (!grid || buttons.length === 0) return;
+if (!grid || buttons.length === 0) return ;
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       const view = btn.dataset.view;
